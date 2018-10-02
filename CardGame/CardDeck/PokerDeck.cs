@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CardGame
 {
@@ -24,10 +25,10 @@ namespace CardGame
         public void shuffle()
         {
             //Optional Linq:
-            //cards.OrderBy(card => Guid.NewGuid());
+            cards = cards.OrderBy(card => Guid.NewGuid()).ToList();
 
             //Knuth Fisher-Yates shuffle
-            Random rng = new Random();
+/*            Random rng = new Random();
             int n = this.cards.Count;
 
             while (n > 1)
@@ -38,7 +39,7 @@ namespace CardGame
                 cards[k] = cards[n];
                 cards[n] = tmp;
             }
-
+*/
             Console.WriteLine("Deck has been shuffled");
         }
         
