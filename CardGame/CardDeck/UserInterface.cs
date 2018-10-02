@@ -16,7 +16,7 @@ namespace CardGame
 
         public void startMenu() {
             Console.WriteLine("1. Build new Deck");
-            if (deckBuilt)
+            if (deck != null && deck.getCount() > 0)
             {
                 Console.WriteLine("2. Shuffle Deck");
                 Console.WriteLine("3. Grab Number of Cards");

@@ -24,22 +24,8 @@ namespace CardGame
         //Shuffle cards using random method
         public void shuffle()
         {
-            //Optional Linq:
             cards = cards.OrderBy(card => Guid.NewGuid()).ToList();
 
-            //Knuth Fisher-Yates shuffle
-/*            Random rng = new Random();
-            int n = this.cards.Count;
-
-            while (n > 1)
-            {
-                n--;
-                int k = rng.Next(n + 1);
-                Card tmp = cards[k];
-                cards[k] = cards[n];
-                cards[n] = tmp;
-            }
-*/
             Console.WriteLine("Deck has been shuffled");
         }
         
