@@ -1,4 +1,4 @@
-﻿namespace CardDeck
+﻿namespace CardGame
 {
     public enum CardSuits
     {

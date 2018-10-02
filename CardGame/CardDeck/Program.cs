@@ -1,12 +1,10 @@
-﻿using System;
-
-namespace CardDeck
+﻿namespace CardGame
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Card Deck Stuff");
+            UserInterface app = new UserInterface();
         }
     }
 }
