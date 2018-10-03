@@ -332,3 +332,8 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+LINQ/LINQ.sln
+LINQ/LINQ/Employee.cs
+LINQ/LINQ/LINQ.csproj
+LINQ/LINQ/MyLinq.cs
+LINQ/LINQ/Program.cs

@@ -39,7 +39,7 @@ namespace CardGame
                 return null;
             }
             cards.Remove(card);
-            return card.getValue();
+            return card.ToString();
         }
 
         /*
@@ -66,7 +66,7 @@ namespace CardGame
         {
             foreach (Card card in cards)
             {
-                Console.WriteLine("Card: " + card.getValue());
+                Console.WriteLine("Card: " + card.ToString());
             }
         }
 
@@ -78,7 +78,7 @@ namespace CardGame
         {
             for(int i = 0; i < n ; i++)
             {
-                Console.WriteLine("Card: " + cards[i].getValue());
+                Console.WriteLine("Card: " + cards[i].ToString());
             }
         }
 
