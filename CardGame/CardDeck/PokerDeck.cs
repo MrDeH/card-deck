@@ -32,12 +32,13 @@ namespace CardGame
         //Get Card method
         public String getCard()
         {
-            var card = cards[0];
-            if (card == null)
+            if (cards.Count == 0)
             {
                 Console.WriteLine("Deck is empty");
                 return null;
             }
+            Card card = cards[0];
+
             cards.Remove(card);
             return card.ToString();
         }
