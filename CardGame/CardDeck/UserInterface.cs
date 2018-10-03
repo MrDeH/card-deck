@@ -2,7 +2,7 @@
 
 namespace CardGame
 {
-    class UserInterface
+    public class UserInterface
     {
         private PokerDeck deck;
         private bool quitFlag;
@@ -101,7 +101,7 @@ namespace CardGame
             return deck != null && deck.getCount() > 0;
         }
 
-        private void continuePrompt(){
+        public void continuePrompt(){
             Console.WriteLine(Environment.NewLine + "Press any key to continue...");
             Console.ReadKey();
         }
