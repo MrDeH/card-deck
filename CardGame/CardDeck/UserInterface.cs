@@ -13,6 +13,9 @@ namespace CardGame
             startMenu();
         }
 
+        /// <summary>
+        /// Conditional start menu
+        /// </summary>
         public void startMenu() {
             Console.WriteLine("1. Build new Deck");
             if (checkDeck())
@@ -33,6 +36,9 @@ namespace CardGame
             menuOption();
         }
 
+        /// <summary>
+        /// Menu Option logic
+        /// </summary>
         private void menuOption()
         {
             int value;
@@ -40,10 +46,10 @@ namespace CardGame
             if (!int.TryParse(input, out value))
             {
                 Console.WriteLine("Invalid Number Type");
+                return;
             }
-            else
-            {
-                if (checkDeck())
+
+            if (checkDeck())
                 {
                     switch (value)
                     {
@@ -75,23 +81,23 @@ namespace CardGame
                         default:
                             break;
                     }
-                }
-                 else
+            }
+            else
+            {
+                switch (value)
                 {
-                    switch (value)
-                    {
-                        case 1:
-                            deck = new PokerDeck();
-                            deckBuiltMessage();
-                            break;
-                        case 2:
-                            quit();
-                            break;
-                        default:
-                            break;
-                    }
+                    case 1:
+                        deck = new PokerDeck();
+                        deckBuiltMessage();
+                        break;
+                    case 2:
+                        quit();
+                        break;
+                    default:
+                        break;
                 }
             }
+          
             if (!quitFlag)
             {
                 continuePrompt();
@@ -100,6 +106,10 @@ namespace CardGame
             }
         }
 
+        /// <summary>
+        /// Check whether the deck has been built
+        /// </summary>
+        /// <returns>boolean</returns>
         private bool checkDeck()
         {
             return deck != null && deck.getCount() > 0;
@@ -110,18 +120,29 @@ namespace CardGame
             Console.ReadKey();
         }
 
+
+        /// <summary>
+        /// Message output when deck is built
+        /// </summary>
         private void deckBuiltMessage()
         {
             deck.countCardsLeftInDeck();
         }
 
+        /// <summary>
+        /// Quit app function
+        /// </summary>
         private void quit()
         {
             quitFlag = true;
         }
 
+        /// <summary>
+        /// Prompt message for reading in number input and returning whether it is valid
+        /// </summary>
+        /// <returns>int<returns>
         private int promptNumber() {
-            int number = 0;
+            int number;
 
             Console.WriteLine("How many cards would you like? ");
 
@@ -130,21 +151,21 @@ namespace CardGame
             if (!int.TryParse(numberInput, out number))
             {
                 Console.WriteLine("Invalid Number Type");
+                return -1;
             }
-            else
+
+            if (number < 1)
             {
-                if (number < 1)
-                {
-                    Console.WriteLine("Number has to be greater than 0");
-                }
-                else
-                {
-                    return number;
-                }
+                Console.WriteLine("Number has to be greater than 0");
+                return -1;
             }
-            return -1;
+            return number;
         }
 
+
+        /// <summary>
+        /// Function to get number of cards from the top of the deck
+        /// </summary>
         private void getCards()
         {
             int value = promptNumber();
@@ -154,6 +175,10 @@ namespace CardGame
             }
         }
 
+
+        /// <summary>
+        /// Display a number of cards from the top of the deck
+        /// </summary>
         private void displayCards()
         {
             int value = promptNumber();
@@ -163,6 +188,11 @@ namespace CardGame
             }
         }
 
+        /// <summary>
+        /// Card Suit options
+        /// </summary>
+        /// <param name="number">int</param>
+        /// <returns>CardSuit</returns>
         private CardSuits getCardSuit(int number)
         {
             switch (number)
@@ -170,7 +200,7 @@ namespace CardGame
                 case 1:
                     return CardSuits.Spades;
                 case 2:
-                    return CardSuits.Spades;
+                    return CardSuits.Clubs;
                 case 3:
                     return CardSuits.Diamonds;
                 default:
@@ -179,7 +209,9 @@ namespace CardGame
 
         }
 
-
+        /// <summary>
+        /// Console output for CardSuit option menu
+        /// </summary>
         private void drawCardSuitOptions()
         {
             Console.Clear();
@@ -189,6 +221,9 @@ namespace CardGame
             Console.WriteLine("4. Hearts");
         }
 
+        /// <summary>
+        /// Search for a card in the deck
+        /// </summary>
         private void cardSearch()
         {
             int number;
@@ -202,34 +237,32 @@ namespace CardGame
             if (!int.TryParse(numberInput, out number))
             {
                 Console.WriteLine("Invalid Number Type");
+                return;
+            }
+
+            if (number > 0 && number < 5)
+            {
+                suit = getCardSuit(number);
+                Console.WriteLine("Enter the Card Value (2-14 with Jack-Ace being 11 through 14):");
+                numberInput = Console.ReadLine();
+                if (!int.TryParse(numberInput, out value))
+                {
+                    Console.WriteLine("Invalid Number Type");
+                    return;
+                }
+
+                if (deck.searchForCard(suit, value))
+                {
+                    Console.WriteLine("Card is still in the deck");
+                }
+                else
+                { 
+                    Console.WriteLine("Card is not in the Deck");
+                }
             }
             else
             {
-                if (number > 0 && number < 5)
-                {
-                    suit = getCardSuit(number);
-                    Console.WriteLine("Enter the Card Value (2-14 with Jack-Ace being 11 through 14):");
-                    numberInput = Console.ReadLine();
-                    if (!int.TryParse(numberInput, out value))
-                    {
-                        Console.WriteLine("Invalid Number Type");
-                    }
-                    else
-                    {
-                        if (deck.searchForCard(suit, value))
-                        {
-                            Console.WriteLine("Card is still in the deck");
-                        }
-                        else
-                        { 
-                            Console.WriteLine("Card is not in the Deck");
-                        }
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Invalid response, the card is not in the deck");
-                }
+                Console.WriteLine("Invalid response, the card is not in the deck");
             }
         }
     }

@@ -2,7 +2,7 @@
 
 namespace CardGame
 {
-    public class Card
+    public class Card : IComparable
     {
         private readonly CardSuits _cardSuit;
         private readonly int _cardValue;
@@ -16,6 +16,25 @@ namespace CardGame
         public CardSuits Suit { get { return _cardSuit; } }
         public int Value { get { return _cardValue; } }
 
+        /// <summary>
+        /// Future use to compare cards
+        /// </summary>
+        /// <param name="obj">Card object</param>
+        /// <returns>int</returns>
+        public int CompareTo(object obj)
+        {
+            if (Value.CompareTo(obj) == 0) 
+            {
+                return Suit.CompareTo(obj);
+            }
+            return Value.CompareTo(obj);
+        }
+
+
+        /// <summary>
+        /// String value for int numbers above 10
+        /// </summary>
+        /// <returns>String</returns>
         public override String ToString()
         {
             String cardValue;

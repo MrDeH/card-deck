@@ -68,10 +68,6 @@ namespace CardGameTests
         [Fact]
         public void TestCountCardsLeftInDeck()
         {
-            /*can't test object directly as there is a
-            * chance it might be the same after a sort.
-            * So test that the method runs
-            */
             PokerDeck deck = new PokerDeck();
             {
                 try
