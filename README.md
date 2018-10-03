@@ -20,8 +20,8 @@ Displays new menu with added options:
   3. Grab Number of Cards  --  Pulls N number of cards off the top of the deck
   4. Display Number of Cards  --  Looks but does not pull N number of cards off the top of the deck
   5. Display Remaining Cards  --  Displays a list of cards left in the deck
-  6. Display Card Count in the Deck  -- Displays the current count of cards left in the deck
-  7. Search for a card in the Deck
+  6. Display Card Count in the Deck  --  Displays the current count of cards left in the deck
+  7. Search for a card in the Deck  -- Displays message if the requested card is currently in the deck.
   8. Quit  --  Quits the application
 
 
