@@ -24,9 +24,9 @@ Displays new menu with added options:
   7. Quit  --  Quits the application
 
 
-#Files:
-Program.cs  --  Main execution
-UserInterface.cs  --  Menu functionality
-PokerDeck.cs  --  Poker Deck class with functionality
-Card.cs  --  Card object
-cardSuits.cs  --  ENum for card suits
+ # Files
+ Program.cs  --  Main execution
+ UserInterface.cs  --  Menu functionality
+ PokerDeck.cs  --  Poker Deck class with functionality
+ Card.cs  --  Card object
+ cardSuits.cs  --  ENum for card suits
