@@ -4,8 +4,8 @@ namespace CardGame
 {
     public class Card
     {
-        private CardSuits _cardSuit { get;}
-        private int _cardValue { get; }
+        private readonly CardSuits _cardSuit;
+        private readonly int _cardValue;
 
         public Card(CardSuits cardSuit, int cardValue)
         {
@@ -13,7 +13,10 @@ namespace CardGame
             _cardValue = cardValue;
         }
 
-        public String getValue()
+        public CardSuits Suit { get { return _cardSuit; } }
+        public int Value { get { return _cardValue; } }
+
+        public override String ToString()
         {
             String cardValue;
         
