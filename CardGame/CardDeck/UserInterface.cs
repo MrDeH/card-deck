@@ -22,7 +22,8 @@ namespace CardGame
                 Console.WriteLine("4. Display Number of Cards");
                 Console.WriteLine("5. Display Remaining Cards");
                 Console.WriteLine("6. Display Card Count in the Deck");
-                Console.WriteLine("7. Quit" + Environment.NewLine);
+                Console.WriteLine("7. Search for a card in the Deck");
+                Console.WriteLine("8. Quit" + Environment.NewLine);
             }
             else
             {
@@ -66,6 +67,9 @@ namespace CardGame
                             deck.countCardsLeftInDeck();
                             break;
                         case 7:
+                            cardSearch();
+                            break;
+                        case 8:
                             quit();
                             break;
                         default:
@@ -156,6 +160,76 @@ namespace CardGame
             if (value != -1)
             {
                 deck.displayCardsInDeck(value);
+            }
+        }
+
+        private CardSuits getCardSuit(int number)
+        {
+            switch (number)
+            {
+                case 1:
+                    return CardSuits.Spades;
+                case 2:
+                    return CardSuits.Spades;
+                case 3:
+                    return CardSuits.Diamonds;
+                default:
+                    return CardSuits.Hearts;
+            }
+
+        }
+
+
+        private void drawCardSuitOptions()
+        {
+            Console.Clear();
+            Console.WriteLine("1. Spades");
+            Console.WriteLine("2. Clubs");
+            Console.WriteLine("3. Diamonds");
+            Console.WriteLine("4. Hearts");
+        }
+
+        private void cardSearch()
+        {
+            int number;
+            CardSuits suit;
+            int value;
+
+            drawCardSuitOptions();
+            Console.WriteLine("Enter the Card Suit:");
+            string numberInput = Console.ReadLine();
+
+            if (!int.TryParse(numberInput, out number))
+            {
+                Console.WriteLine("Invalid Number Type");
+            }
+            else
+            {
+                if (number > 0 && number < 5)
+                {
+                    suit = getCardSuit(number);
+                    Console.WriteLine("Enter the Card Value (2-14 with Jack-Ace being 11 through 14):");
+                    numberInput = Console.ReadLine();
+                    if (!int.TryParse(numberInput, out value))
+                    {
+                        Console.WriteLine("Invalid Number Type");
+                    }
+                    else
+                    {
+                        if (deck.searchForCard(suit, value))
+                        {
+                            Console.WriteLine("Card is still in the deck");
+                        }
+                        else
+                        { 
+                            Console.WriteLine("Card is not in the Deck");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid response, the card is not in the deck");
+                }
             }
         }
     }

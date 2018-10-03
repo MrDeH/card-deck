@@ -21,6 +21,12 @@ namespace CardGame
             }
         }
 
+        public bool searchForCard(CardSuits? cardSuit, int value)
+        {
+            Card singleCard = cards.FirstOrDefault(card => card.Suit == cardSuit && card.Value == value);
+            return singleCard != null;
+        }
+
         //Shuffle cards using random method
         public void shuffle()
         {
