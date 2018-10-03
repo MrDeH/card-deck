@@ -4,9 +4,8 @@ namespace CardGame
 {
     class UserInterface
     {
-        private Boolean deckBuilt;
         private PokerDeck deck;
-        private Boolean quitFlag;
+        private bool quitFlag;
 
         public UserInterface()
         {
@@ -43,7 +42,6 @@ namespace CardGame
                 {
                     case 1:
                         deck = new PokerDeck();
-                        setDeckBuilt(true);
                         deckBuiltMessage();
                         break;
                     case 2:
@@ -122,10 +120,6 @@ namespace CardGame
             if(value != -1)
             {
                 deck.makeHandOfCards(value);
-                if(deck.getCount() < 1)
-                {
-                    setDeckBuilt(false);
-                }
             }
         }
 
@@ -136,11 +130,6 @@ namespace CardGame
             {
                 deck.displayCardsInDeck(value);
             }
-        }
-
-        private void setDeckBuilt(Boolean deckBuilt)
-        {
-            this.deckBuilt = deckBuilt;
         }
     }
 }
