@@ -15,15 +15,19 @@ namespace CardGame
 
         public void startMenu() {
             Console.WriteLine("1. Build new Deck");
-            if (deck != null && deck.getCount() > 0)
+            if (checkDeck())
             {
                 Console.WriteLine("2. Shuffle Deck");
                 Console.WriteLine("3. Grab Number of Cards");
                 Console.WriteLine("4. Display Number of Cards");
                 Console.WriteLine("5. Display Remaining Cards");
                 Console.WriteLine("6. Display Card Count in the Deck");
+                Console.WriteLine("7. Quit" + Environment.NewLine);
             }
-            Console.WriteLine("7. Quit" + Environment.NewLine);
+            else
+            {
+                Console.WriteLine("2. Quit" + Environment.NewLine);
+            }
             Console.WriteLine("Enter an option:");
             menuOption();
         }
@@ -38,32 +42,50 @@ namespace CardGame
             }
             else
             {
-                switch (value)
+                if (checkDeck())
                 {
-                    case 1:
-                        deck = new PokerDeck();
-                        deckBuiltMessage();
-                        break;
-                    case 2:
-                        deck.shuffle();
-                        break;
-                    case 3:
-                        getCards();
-                        break;
-                    case 4:
-                        displayCards();
-                        break;
-                    case 5:
-                        deck.displayCardsInDeck();
-                        break;
-                    case 6:
-                        deck.countCardsLeftInDeck();
-                        break;
-                    case 7:
-                        quit();
-                        break;
-                    default:
-                        break;
+                    switch (value)
+                    {
+                        case 1:
+                            deck = new PokerDeck();
+                            deckBuiltMessage();
+                            break;
+                        case 2:
+                            deck.shuffle();
+                            break;
+                        case 3:
+                            getCards();
+                            break;
+                        case 4:
+                            displayCards();
+                            break;
+                        case 5:
+                            deck.displayCardsInDeck();
+                            break;
+                        case 6:
+                            deck.countCardsLeftInDeck();
+                            break;
+                        case 7:
+                            quit();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                 else
+                {
+                    switch (value)
+                    {
+                        case 1:
+                            deck = new PokerDeck();
+                            deckBuiltMessage();
+                            break;
+                        case 2:
+                            quit();
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
             if (!quitFlag)
@@ -72,6 +94,11 @@ namespace CardGame
                 Console.Clear();
                 startMenu();
             }
+        }
+
+        private bool checkDeck()
+        {
+            return deck != null && deck.getCount() > 0;
         }
 
         private void continuePrompt(){
